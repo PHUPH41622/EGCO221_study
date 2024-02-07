@@ -74,69 +74,78 @@ class Shop {
         System.out.println();
         System.out.println("=== Simulation ===");
         int RefillPerOddDay = 0;
-        for(int day = 1; day <= maxDays; day++) {
-            if (day % 2 != 0) {
-                System.out.println("Day "+day);
-                RefillPerOddDay = RefillPerOddDay + itemsToRefill;
-                System.out.println("Refilling    >> Remaining items = "+RefillPerOddDay+" lots");
-                order = random.nextInt(20) + 1;
-                orderQueue.add( new Customer(5+day, order) );
-                System.out.print("New arrival  >> ");
-                c = new Customer(5+day, order);
-                c.print();
-                System.out.println();
-                System.out.print("Packing 1    >> ");
-                orderQueue.peek().print();
-                int rem = RemainCheck(RefillPerOddDay, orderQueue.peek().getOrder(), 1);
-                if (RefillPerOddDay == rem) {
-                    billingQueue.addLast(orderQueue.poll());
-                    System.out.print("Packing 2    >> ");
-                    orderQueue.peek().print();
-                    RefillPerOddDay = RemainCheck(RefillPerOddDay, orderQueue.peek().getOrder(), 2);
-                    orderQueue.add(billingQueue.pollLast());
-                    System.out.printf("\n\n");
-                    continue;
-                }
-                RefillPerOddDay = rem;
-                System.out.println();
-                System.out.print("Packing 2    >> ");
-                orderQueue.peek().print();
-                RefillPerOddDay = RemainCheck(RefillPerOddDay, orderQueue.peek().getOrder(), 2);
-                System.out.printf("\n\n");
-            } else {
-                System.out.println("Day "+day);
-                order = random.nextInt(20) + 1;
-                orderQueue.add( new Customer(5+day, order) );
-                System.out.print("New arrival  >> ");
-                c = new Customer(5+day, order);
-                c.print();
-                System.out.println();
-                System.out.print("Packing 1    >> ");
-                orderQueue.peek().print();
-                int rem = RemainCheck(RefillPerOddDay, orderQueue.peek().getOrder(), 1);
-                if (RefillPerOddDay == rem) {
-                    billingQueue.addFirst(orderQueue.poll());
-                    System.out.print("Packing 2    >> ");
-                    orderQueue.peek().print();
-                    RefillPerOddDay = RemainCheck(RefillPerOddDay, orderQueue.peek().getOrder(), 2);
-                    orderQueue.add(billingQueue.pollFirst());
-                    for (Customer c : billingQueue) {
-                        System.out.println("Billing      >> Customer "+billingQueue.poll().getID());
+            for(int day = 1; day <= maxDays; day++) {
+                if (day % 2 != 0) {
+                    try {
+                        System.out.println("Day " + day);
+                        RefillPerOddDay = RefillPerOddDay + itemsToRefill;
+                        System.out.println("Refilling    >> Remaining items = " + RefillPerOddDay + " lots");
+                        order = random.nextInt(20) + 1;
+                        orderQueue.add(new Customer(5 + day, order));
+                        System.out.print("New arrival  >> ");
+                        c = new Customer(5 + day, order);
+                        c.print();
+                        System.out.println();
+                        System.out.print("Packing 1    >> ");
+                        orderQueue.peek().print();
+                        int rem = RemainCheck(RefillPerOddDay, orderQueue.peek().getOrder(), 1);
+                        if (RefillPerOddDay == rem) {
+                            billingQueue.addLast(orderQueue.poll());
+                            System.out.print("Packing 2    >> ");
+                            orderQueue.peek().print();
+                            RefillPerOddDay = RemainCheck(RefillPerOddDay, orderQueue.peek().getOrder(), 2);
+                            orderQueue.add(billingQueue.pollLast());
+                            System.out.printf("\n\n");
+                            continue;
+                        }
+                        RefillPerOddDay = rem;
+                        System.out.println();
+                        System.out.print("Packing 2    >> ");
+                        orderQueue.peek().print();
+                        RefillPerOddDay = RemainCheck(RefillPerOddDay, orderQueue.peek().getOrder(), 2);
+                        System.out.printf("\n\n");
+                    } catch (Exception e) {
+                        System.out.println("No remaining customer in order queue\n");
                     }
-                    System.out.printf("\n");
-                    continue;
+                } else {
+                    try {
+                        System.out.println("Day " + day);
+                        order = random.nextInt(20) + 1;
+                        orderQueue.add(new Customer(5 + day, order));
+                        System.out.print("New arrival  >> ");
+                        c = new Customer(5 + day, order);
+                        c.print();
+                        System.out.println();
+                        System.out.print("Packing 1    >> ");
+                        orderQueue.peek().print();
+                        int rem = RemainCheck(RefillPerOddDay, orderQueue.peek().getOrder(), 1);
+                        if (RefillPerOddDay == rem) { //fail
+                            System.out.println();
+                            billingQueue.addFirst(orderQueue.poll());
+                            System.out.print("Packing 2    >> ");
+                            orderQueue.peek().print();
+                            RefillPerOddDay = RemainCheck(RefillPerOddDay, orderQueue.peek().getOrder(), 2);
+                            orderQueue.add(billingQueue.pollFirst());
+                            for (Customer c : billingQueue) {
+                                System.out.print("\nBilling      >> Customer " + billingQueue.poll().getID());
+                            }
+                            System.out.printf("\n\n");
+                            continue;
+                        }
+                        RefillPerOddDay = rem;
+                        System.out.println();
+                        System.out.print("Packing 2    >> ");
+                        orderQueue.peek().print();
+                        RefillPerOddDay = RemainCheck(RefillPerOddDay, orderQueue.peek().getOrder(), 2);
+                    } catch (Exception e) {
+                        System.out.print("No remaining customer in order queue");
+                    }
+                    for (Customer c : billingQueue) {
+                        System.out.print("\nBilling      >> Customer " + billingQueue.poll().getID());
+                    }
+                    System.out.printf("\n\n");
                 }
-                RefillPerOddDay = rem;
-                System.out.println();
-                System.out.print("Packing 2    >> ");
-                orderQueue.peek().print();
-                RefillPerOddDay = RemainCheck(RefillPerOddDay, orderQueue.peek().getOrder(), 2);
-                for (Customer c : billingQueue) {
-                    System.out.println("Billing      >> Customer "+billingQueue.poll().getID());
-                }
-                System.out.printf("\n");
             }
-        }
         System.out.println("\n=== Remaining customers in order queue ===");
         while (orderQueue.size() > 0) {
             orderQueue.poll().print();
@@ -156,7 +165,7 @@ class Shop {
             billingQueue.add(orderQueue.poll());
             return RefillPerOddDay;
         } else {
-            System.out.println("  failure");
+            System.out.print("  failure");
             return RefillPerOddDay;
         }
     }
