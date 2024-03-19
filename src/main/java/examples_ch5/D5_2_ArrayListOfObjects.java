@@ -5,8 +5,6 @@ import java.util.*;
 class D5_2_ArrayListOfObjects {
     public static void main(String[] args) {
 
-        Scanner scan = new Scanner(System.in);
-
         ArrayList<MyStudent> A = new ArrayList<MyStudent>();
         System.out.println("Before adding members = " + A);
         A.add( new MyStudent("Justin", 44.5, 20) );

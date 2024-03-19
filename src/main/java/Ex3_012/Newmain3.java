@@ -1,4 +1,4 @@
-package Ex3_6513012;
+package Ex3_012;
 
 //Napasrapee Satittham + 6513012
 
@@ -8,10 +8,11 @@ import java.util.*;
 public class Newmain3 {
     public static void main(String[] args) {
         Newmain3 mainapp = new Newmain3();
-        String path = "src/main/java/Ex3_6513012/";
+        String path = "src/main/java/Ex3_012/";
         String fileName = "languages.txt";
         ArrayList<Language> AL = new ArrayList<>();
         Scanner keyboardScan = new Scanner(System.in);
+        boolean running = true;
         try {
             Scanner filescan = new Scanner(new File(path + fileName));
 
@@ -29,35 +30,46 @@ public class Newmain3 {
             System.out.println("New file name = ");
             fileName = keyboardScan.next();
         }
-        System.out.println("Sort by >> n = name");
-        System.out.println("           y = year");
-        System.out.println("           q = Stackoverflow question");
-        System.out.println("           r = GitHub repos");
-        System.out.println("           s = GitHub stars");
-        System.out.println("      others = quit");
-        String mode = (keyboardScan.next()).toLowerCase();
-        System.out.println("Language          Release Year    Stackoverflow Question(M)    GitHub Repos(M)   GitHub Top Stars(K)");
-        System.out.println("========================================================================================================");
+        while(running) {
+            System.out.println("Sort by >> n = name");
+            System.out.println("           y = year");
+            System.out.println("           q = Stackoverflow question");
+            System.out.println("           r = GitHub repos");
+            System.out.println("           s = GitHub stars");
+            System.out.println("      others = quit");
+            String mode = (keyboardScan.next()).toLowerCase();
 
-        switch (mode) {
-            case "n":
-                AL.sort(new SortLanguageByName());
-                for (Language l : AL) l.print();
-                break;
-            case "y":
-                mainapp.Ysort(AL);
-                break;
-            case "q":
-                mainapp.Qsort(AL);
-                break;
-            case "r":
-                mainapp.Rsort(AL);
-                break;
-            case "s":
-                mainapp.Ssort(AL);
-                break;
-            default:
-                System.out.println("A problem was encountered !!");
+            switch (mode) {
+                case "n":
+                    System.out.println("Language          Release Year    Stackoverflow Question(M)    GitHub Repos(M)   GitHub Top Stars(K)");
+                    System.out.println("========================================================================================================");
+                    AL.sort(new SortLanguageByName());
+                    for (Language l : AL) l.print();
+                    break;
+                case "y":
+                    System.out.println("Language          Release Year    Stackoverflow Question(M)    GitHub Repos(M)   GitHub Top Stars(K)");
+                    System.out.println("========================================================================================================");
+                    mainapp.Ysort(AL);
+                    break;
+                case "q":
+                    System.out.println("Language          Release Year    Stackoverflow Question(M)    GitHub Repos(M)   GitHub Top Stars(K)");
+                    System.out.println("========================================================================================================");
+                    mainapp.Qsort(AL);
+                    break;
+                case "r":
+                    System.out.println("Language          Release Year    Stackoverflow Question(M)    GitHub Repos(M)   GitHub Top Stars(K)");
+                    System.out.println("========================================================================================================");
+                    mainapp.Rsort(AL);
+                    break;
+                case "s":
+                    System.out.println("Language          Release Year    Stackoverflow Question(M)    GitHub Repos(M)   GitHub Top Stars(K)");
+                    System.out.println("========================================================================================================");
+                    mainapp.Ssort(AL);
+                    break;
+                default:
+                    System.out.println("A problem was encountered !!");
+                    running = false;
+            }
         }
     }
 

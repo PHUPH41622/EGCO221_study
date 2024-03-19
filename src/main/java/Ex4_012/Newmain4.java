@@ -1,4 +1,4 @@
-package Ex4_6513012;
+package Ex4_012;
 
 // Napasrapee Satittham 6513012
 
@@ -24,7 +24,6 @@ public class Newmain4 {
             c.print();
             System.out.println();
         }
-
         Shop info = new Shop(refill, days, orderQueue);
         info.simulation();
     }

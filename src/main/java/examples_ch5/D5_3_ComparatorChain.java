@@ -69,8 +69,8 @@ public class D5_3_ComparatorChain {
         D5_3_ComparatorChain mainprog = new D5_3_ComparatorChain();
         mainprog.initialize();
 
-        mainprog.sortEasy();
-        //mainprog.sortWithChain();
+//        mainprog.sortEasy();
+        mainprog.sortWithChain();
         //mainprog.checkReverse();
     }
     

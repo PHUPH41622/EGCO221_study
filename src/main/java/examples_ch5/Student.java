@@ -24,8 +24,7 @@ class Student
 
     
     @Override
-    public String toString()
-    {  
+    public String toString() {
         String s = String.format("(%s, %.2f)", name, score); 
         return s;
     }
