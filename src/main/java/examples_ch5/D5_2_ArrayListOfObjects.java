@@ -12,19 +12,21 @@ class D5_2_ArrayListOfObjects {
         A.add( new MyStudent("Leonel", 66.5, 21) );
         System.out.println("\n=== Original content ===");
         for (MyStudent m : A)  m.print();
+//        System.out.print(A);
         System.out.println();
+
 
         // Try this with and without toString in class Student
         System.out.println("Explicit toString = " + A.toString());
         System.out.println("Implicit toString = " + A);
         System.out.println();
-        
+
         //replace
         MyStudent old = A.set(0, new MyStudent("Nicole", 88.5, 25));
         System.out.printf("\nOld student = %s \n", old);
-        System.out.printf("New student = %s \n", A.get(0)); 
+        System.out.printf("New student = %s \n", A.get(0));
 
-        
+
 	    MyStudent key1 = new MyStudent("keaton", 0, 0);
         MyStudent key2 = new MyStudent("annie", 0, 0);
 
@@ -36,13 +38,14 @@ class D5_2_ArrayListOfObjects {
 
 //        A.remove(key1);
 //        System.out.printf("\nAfter removing %s = %s \n", key1, A);
-        
+
         System.out.println("\n=== Sort MyStudent by score (using Comparable)");
         Collections.sort(A);
         System.out.println(A);
-        
+
         System.out.println("\n=== Sort MyStudent by name (using Comparator)");
 	    Collections.sort(A, new SortStudentByName());
 	    System.out.println(A);
     }
 }
+

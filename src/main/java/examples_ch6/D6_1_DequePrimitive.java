@@ -23,7 +23,7 @@ class D6_1_DequePrimitive {
         // (1.2) Use for-each to access each member - no get(i) for ArrayDeque
         System.out.println("\n===== Access AD1 by for-each =====");
         for (double data : AD1)
-            System.out.printf("%.2f  ", data);
+        System.out.printf("%.2f  ", data);
         System.out.printf("\nEmpty ? %b \n", AD1.isEmpty());
         
         
