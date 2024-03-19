@@ -1,7 +1,5 @@
 package examples_ch5;
 
-import java.util.*;
-
 class D5_1_ArrayOfObjects {
     public static void main(String[] args) {
         
@@ -40,8 +38,9 @@ class D5_1_ArrayOfObjects {
         for (int i=0; i < st.length; i++)   st[i].print();      // for i
         //System.out.println(st);
 
-        System.out.println("\n=== MyStudent array ===");        // for each
-        for (MyStudent m : mst) m.print();
+        System.out.println("\n=== MyStudent array ===");
+//        for(int i = 0; i < mst.length; i++) mst[i].print();   // for loop
+        for (MyStudent m : mst) m.print();                    // for each
         //System.out.println(mst);
         System.out.print("\n\n");
 
