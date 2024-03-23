@@ -89,86 +89,71 @@ class ActorMap {
     }
 
     public void initialActors() {
-        String[] substring = InputValidActor();
+        Set<String> validActor = InputValidActor();
         Set<String> KS = workingMap.keySet();
 
-        for (int i = 0; i < substring.length; i++) {
-            for (String key : KS) {
-                int x = 1;
-                LinkedHashSet<String> value = workingMap.get(key);
-                if(key.toLowerCase().contains(substring[i].trim())) {
-                    resultSet.addAll(value);
-                    System.out.printf("%20s  >>  ", key);
-                    for(Object v : value) {
-                        System.out.printf("%-30s", v);
-                        x++;
-                        if( x > 5 && v != null) {
-                            System.out.print("\n                      >>  ");
-                            x = 1;
-                        }
-                    }
-                    System.out.print("\n");
-                }
+        for (String actor : validActor) {
+            int x = 1;
+            if (KS.contains(actor)) {
+                LinkedHashSet<String> movies = workingMap.get(actor);
+                resultSet.addAll(movies);
+                System.out.printf("%20s  >>  ", actor);
+                for(String m : workingMap.get(actor)) {
+                    System.out.printf("%-30s", m);
+                    x++;
+                    if( x > 5 && m != null) { System.out.print("\n                      >>  "); x = 1; }
+                } System.out.print("\n");
             }
         }
+
         System.out.print("\nResult = "+resultSet+"\n\n");
         System.out.print("Total movies = "+resultSet.size()+"\n");
     }
     public void containActors() {
-        String[] substring = InputValidActor();
+        Set<String> validActor = InputValidActor();
         Set<String> KS = workingMap.keySet();
 
-        for (int i = 0; i < substring.length; i++) {
-            for (String key : KS) {
-                int x = 1;
-                LinkedHashSet<String> value = workingMap.get(key);
-                if(key.toLowerCase().contains(substring[i].trim())) {
-                    resultSet.retainAll(value);
-                    System.out.printf("%20s  >>  ", key);
-                    for(Object v : value) {
-                        System.out.printf("%-30s", v);
-                        x++;
-                        if( x > 5 && v != null) {
-                            System.out.print("\n                      >>  ");
-                            x = 1;
-                        }
-                    }
-                    System.out.print("\n");
-                }
+        for (String actor : validActor) {
+            int x = 1;
+            if (KS.contains(actor)) {
+                LinkedHashSet<String> movies = workingMap.get(actor);
+                resultSet.retainAll(movies);
+                System.out.printf("%20s  >>  ", actor);
+                for(String m : workingMap.get(actor)) {
+                    System.out.printf("%-30s", m);
+                    x++;
+                    if( x > 5 && m != null) { System.out.print("\n                      >>  "); x = 1; }
+                } System.out.print("\n");
             }
         }
+
         System.out.print("\nResult = "+resultSet+"\n\n");
         System.out.print("Total movies = "+resultSet.size()+"\n");
     }
 
     public void withoutActors() {
-        String[] substring = InputValidActor();
+        Set<String> validActor = InputValidActor();
         Set<String> KS = workingMap.keySet();
 
-        for (int i = 0; i < substring.length; i++) {
-            for (String key : KS) {
-                int x = 1;
-                LinkedHashSet<String> value = workingMap.get(key);
-                if(key.toLowerCase().contains(substring[i].trim())) {
-                    resultSet.removeAll(value);
-                    System.out.printf("%20s  >>  ", key);
-                    for(Object v : value) {
-                        System.out.printf("%-30s", v);
-                        x++;
-                        if( x > 5 && v != null) {
-                            System.out.print("\n                      >>  ");
-                            x = 1;
-                        }
-                    }
-                    System.out.print("\n");
-                }
+        for (String actor : validActor) {
+            int x = 1;
+            if (KS.contains(actor)) {
+                LinkedHashSet<String> movies = workingMap.get(actor);
+                resultSet.removeAll(movies);
+                System.out.printf("%20s  >>  ", actor);
+                for(String m : workingMap.get(actor)) {
+                    System.out.printf("%-30s", m);
+                    x++;
+                    if( x > 5 && m != null) { System.out.print("\n                      >>  "); x = 1; }
+                } System.out.print("\n");
             }
         }
+
         System.out.print("\nResult = "+resultSet+"\n\n");
         System.out.print("Total movies = "+resultSet.size()+"\n");
     }
 
-    public String[] InputValidActor () {
+    public LinkedHashSet<String> InputValidActor () {
         LinkedHashSet<String> validActors = new LinkedHashSet<>();
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Add names or surnames separated by comma = ");
@@ -185,7 +170,6 @@ class ActorMap {
         }
 
         System.out.println("Valid input actors = "+validActors+"\n");
-        return substring;
+        return validActors;
     }
 }
-
