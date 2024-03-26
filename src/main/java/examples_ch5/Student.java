@@ -53,7 +53,7 @@ class Student
 }
 
 // separate Comparator classes
-class SortStudentByName implements Comparator {
+class SortStudentByName implements Comparator{
     public int compare(Object o1, Object o2) {
         Student s1 = (Student)o1;
         Student s2 = (Student)o2;
@@ -69,6 +69,4 @@ class SortStudentByScore implements Comparator<Student> {
         else return 0;
     }
 }
-
-
 

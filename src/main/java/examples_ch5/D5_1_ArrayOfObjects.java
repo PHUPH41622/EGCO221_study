@@ -1,5 +1,7 @@
 package examples_ch5;
 
+import java.util.Arrays;
+
 class D5_1_ArrayOfObjects {
     public static void main(String[] args) {
         
@@ -36,7 +38,7 @@ class D5_1_ArrayOfObjects {
         // Getting content of array by toString doesn't work
         System.out.println("\n=== Student array ===");
         for (int i=0; i < st.length; i++)   st[i].print();      // for i
-        //System.out.println(st);
+        System.out.println(st[0]);
 
         System.out.println("\n=== MyStudent array ===");
 //        for(int i = 0; i < mst.length; i++) mst[i].print();   // for loop
@@ -49,36 +51,34 @@ class D5_1_ArrayOfObjects {
         // (3) Equality and hashcode
         //     (3.1) Try this with and without equals
         //     (3.2) Try this with and without hashcode
-//        Student key = new Student("Annie", -1);
-//        System.out.printf("st[0] = %s, key = %s \n", st[0], key);
-//        System.out.printf("st[0] == key ? %b \n", st[0].equals(key));
-//        System.out.printf("Hashcode of st[0] = %d \n", st[0].hashCode());
-//        System.out.printf("Hashcode of key   = %d \n\n", key.hashCode());
+        Student key = new Student("Annie", -1);
+        System.out.printf("st[0] = %s, key = %s \n", st[0], key);
+        System.out.printf("st[0] == key ? %b \n", st[0].equals(key));
+        System.out.printf("Hashcode of st[0] = %d \n", st[0].hashCode());
+        System.out.printf("Hashcode of key   = %d \n\n", key.hashCode());
         
 
-        /*
+
 	// (4) MyStudent implements Comparable, Student doesn't        
         System.out.println("\n=== Sort MyStudent by score (using Comparable)");
         Arrays.sort(mst);
         for (int i=0; i < mst.length; i++)  mst[i].print();
-        */
 
-        
 
-//	    System.out.println("\n=== Sort Student by score (using Comparator)");
-//        Arrays.sort(st, new SortStudentByScore());
-//	    for (int i=0; i < st.length; i++)  st[i].print();
+
+	    System.out.println("\n=== Sort Student by score (using Comparator)");
+        Arrays.sort(st, new SortStudentByScore());
+	    for (int i=0; i < st.length; i++)  st[i].print();
 //
-//	    System.out.println("\n=== Sort Student by name (using Comparator)");
-//        Arrays.sort(st, new SortStudentByName());
-//	    for (Student s : st)  s.print();
+	    System.out.println("\n=== Sort Student by name (using Comparator)");
+        Arrays.sort(st, new SortStudentByName());
+	    for (Student s : st)  s.print();
 //
 //        // Use Comparator's sorting instead of its own natural order
 //        // Student pointer can point to MyStudent object
-//	    System.out.println("\n=== Sort MyStudent by name (using Comparator)");
-//        Arrays.sort(mst, new SortStudentByName());
-//	    for (MyStudent m : mst)  m.print();
-
+	    System.out.println("\n=== Sort MyStudent by name (using Comparator)");
+        Arrays.sort(mst, new SortStudentByName());
+	    for (MyStudent m : mst)  m.print();
 
         
         /*
