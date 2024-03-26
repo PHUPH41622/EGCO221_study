@@ -9,7 +9,7 @@ import org.jgrapht.alg.shortestpath.*;
 import org.jgrapht.alg.interfaces.*;
 
 
-class D11_3_SimpleDirectedGraph extends D11_1_SimpleGraph
+class D11_3_SimpleDirectedGraph extends D11_1_SimpleGraph // extend จาก class แรก เพราะ no weight เหมือนกัน
 {
     // Use members inherited from D11_1_SimpleGraph
     //    Variables : AllCountries, CountryNames, G
@@ -21,27 +21,25 @@ class D11_3_SimpleDirectedGraph extends D11_1_SimpleGraph
     //protected SimpleDirectedGraph<String, DefaultEdge>      G
 
     ////////////////////////////////////////////////////////////////////////////
-    public static void main(String[] args) 
-    {
-	D11_3_SimpleDirectedGraph mygraph = new D11_3_SimpleDirectedGraph();
-	System.out.println("Directed graph (no weight) \n");
-	mygraph.printGraph();                  // parent's method
-	//mygraph.testContent();               // parent's method        
-        //mygraph.checkType();                 // parent's method
+    public static void main(String[] args) {
+        D11_3_SimpleDirectedGraph mygraph = new D11_3_SimpleDirectedGraph();
+        System.out.println("Directed graph (no weight) \n");
+        mygraph.printGraph();                  // parent's method
+//	    mygraph.testContent();                 // parent's method
+//        mygraph.checkType();                 // parent's method
         
-        //mygraph.testWeakConnectivity();      // parent's method
-        //mygraph.testStrongConnectivity();    // parent's method
+//        mygraph.testWeakConnectivity();      // parent's method
+//        mygraph.testStrongConnectivity();    // parent's method
         
-        //mygraph.testColoring();              // parent's method
+//        mygraph.testColoring();              // parent's method
         
-	//mygraph.testTraversal();
+//	    mygraph.testTraversal();
         //mygraph.testTopology();
         
-	//mygraph.testShortestPath();
+	    mygraph.testShortestPath();
     }
     
-    public D11_3_SimpleDirectedGraph()
-    {
+    public D11_3_SimpleDirectedGraph() {
 	// real Country objects
 	AllCountries = new HashMap<String, Country>();
 	AllCountries.put("china", new Country("China", 2.44));
@@ -80,17 +78,15 @@ class D11_3_SimpleDirectedGraph extends D11_1_SimpleGraph
 	System.out.println();
     }
 
-    public void testTraversal()
-    {
-	Scanner scan = new Scanner(System.in);
-	System.out.println("\nEnter Country name for traversal : "); 
-	String key1 = scan.next();
+    public void testTraversal() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("\nEnter Country name for traversal : ");
+        String key1 = scan.next();
 
         GraphIterator<String, DefaultEdge> GI;
-        
-	// Exception if start node doesn't exist
-	if (G.containsVertex(key1))
-	{	
+
+        // Exception if start node doesn't exist
+        if (G.containsVertex(key1)) { // make sure that has key1 node on graph
             GI = new DepthFirstIterator<>(G, key1);
             System.out.printf("DF traversal from %s : ", key1);
             iterate(GI);
@@ -98,7 +94,7 @@ class D11_3_SimpleDirectedGraph extends D11_1_SimpleGraph
             GI = new BreadthFirstIterator<>(G, key1);
             System.out.printf("BF traversal from %s : ", key1);
             iterate(GI);
-	}
+        }
     }
 
     public void testTopology()

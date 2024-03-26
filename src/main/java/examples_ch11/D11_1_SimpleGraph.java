@@ -18,53 +18,51 @@ class D11_1_SimpleGraph
     //protected SimpleGraph<String, DefaultEdge>    G; 
     
     ////////////////////////////////////////////////////////////////////////////
-    public static void main(String[] args) 
-    {
-	D11_1_SimpleGraph mygraph = new D11_1_SimpleGraph();
-	System.out.println("Simple graph (no weight) \n");
-	mygraph.printGraph();
-	//mygraph.testContent();
-        //mygraph.checkType();        
+    public static void main(String[] args) {
+        D11_1_SimpleGraph mygraph = new D11_1_SimpleGraph();
+        System.out.println("Simple graph (no weight) \n");
+        mygraph.printGraph();
+//        mygraph.testContent();
+//        mygraph.checkType();
 
-        //mygraph.disconnectGraph();
-        //mygraph.testWeakConnectivity();          
+//        mygraph.disconnectGraph();
+//        mygraph.testWeakConnectivity();
         //mygraph.testStrongConnectivity();      // error! for undirected graph
         
-        //mygraph.testMST();
-        //mygraph.testColoring();       
+//        mygraph.testMST();
+        mygraph.testColoring();
     }
     
-    public D11_1_SimpleGraph()
-    {
-	// real Country objects
-	AllCountries = new HashMap<String, Country>();
-	AllCountries.put("china", new Country("China", 2.44));
-	AllCountries.put("korea", new Country("Korea", 3.19));
-	AllCountries.put("japan", new Country("Japan", 4.16));
-	AllCountries.put("thailand",  new Country("Thailand",  2.46));
-	AllCountries.put("malaysia",  new Country("Malaysia",  2.34));
-	AllCountries.put("singapore", new Country("Singapore", 3.75));
-	AllCountries.put("australia", new Country("Australia", 4.20));
+    public D11_1_SimpleGraph() {
+        // real Country objects
+        AllCountries = new HashMap<String, Country>();
+        AllCountries.put("china", new Country("China", 2.44));
+        AllCountries.put("korea", new Country("Korea", 3.19));
+        AllCountries.put("japan", new Country("Japan", 4.16));
+        AllCountries.put("thailand",  new Country("Thailand",  2.46));
+        AllCountries.put("malaysia",  new Country("Malaysia",  2.34));
+        AllCountries.put("singapore", new Country("Singapore", 3.75));
+        AllCountries.put("australia", new Country("Australia", 4.20));
 
-	// graph nodes are only country names
-	CountryNames = new ArrayList<String>();
-	CountryNames.add("china");	CountryNames.add("korea"); 
-	CountryNames.add("japan");	CountryNames.add("thailand");
-	CountryNames.add("malaysia");	CountryNames.add("singapore");
-	CountryNames.add("australia");
+        // graph nodes are only country names
+        CountryNames = new ArrayList<String>();
+        CountryNames.add("china");	CountryNames.add("korea");
+        CountryNames.add("japan");	CountryNames.add("thailand");
+        CountryNames.add("malaysia");	CountryNames.add("singapore");
+        CountryNames.add("australia");
 
-	G = new SimpleGraph<>(DefaultEdge.class);
+        G = new SimpleGraph<>(DefaultEdge.class);
 
-	Graphs.addAllVertices(G, CountryNames);
-	//G.addEdge("china", "china");		// error!
-	//G.addEdge("china", "usa");		// error!
+        Graphs.addAllVertices(G, CountryNames);
+//        G.addEdge("china", "china");		// error!
+//        G.addEdge("china", "usa");		// error! -> no usa
 
-	G.addEdge("china", "korea");		G.addEdge("china", "thailand");
-	G.addEdge("china", "malaysia");		G.addEdge("korea", "japan");
-	G.addEdge("korea", "australia");	G.addEdge("japan", "thailand");
-	G.addEdge("japan", "singapore");	G.addEdge("japan", "australia");
-	G.addEdge("thailand", "malaysia");	G.addEdge("thailand", "singapore");
-	G.addEdge("malaysia", "singapore");	G.addEdge("singapore", "australia");		
+        G.addEdge("china", "korea");		G.addEdge("china", "thailand");
+        G.addEdge("china", "malaysia");		G.addEdge("korea", "japan");
+        G.addEdge("korea", "australia");	G.addEdge("japan", "thailand");
+        G.addEdge("japan", "singapore");	G.addEdge("japan", "australia");
+        G.addEdge("thailand", "malaysia");	G.addEdge("thailand", "singapore");
+        G.addEdge("malaysia", "singapore");	G.addEdge("singapore", "australia");
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -73,70 +71,65 @@ class D11_1_SimpleGraph
 	return AllCountries.get(name);
     }
 
-    public void printGraph()
-    {		
-	Set<DefaultEdge> allEdges = G.edgeSet();
-	printDefaultEdges(allEdges, false);
+    public void printGraph() {
+        Set<DefaultEdge> allEdges = G.edgeSet();
+        printDefaultEdges(allEdges, false);
     }
 
-    public void printDefaultEdges(Collection<DefaultEdge> E, boolean f)
-    {
-	for (DefaultEdge e : E)
-	{
-            System.out.println(e);    
-			
-            /*
-            // format our own output
-            Country source = searchCountry(G.getEdgeSource(e));
-            Country target = searchCountry(G.getEdgeTarget(e));
-            
-            if (f)  // print object content
-		System.out.printf("%20s - %20s \n", source, target);
+    public void printDefaultEdges(Collection<DefaultEdge> E, boolean f) {
+        for (DefaultEdge e : E) {
+            System.out.println(e);
 
-            else    // print only Country name
-		System.out.printf("%s - %s \n", source.getName(), target.getName());
-            */
-	}
+                /*
+                // format our own output
+                Country source = searchCountry(G.getEdgeSource(e));
+                Country target = searchCountry(G.getEdgeTarget(e));
+
+                if (f)  // print object content
+            System.out.printf("%20s - %20s \n", source, target);
+
+                else    // print only Country name
+            System.out.printf("%s - %s \n", source.getName(), target.getName());
+                */
+        }
     }
 
     ////////////////////////////////////////////////////////////////////////////
-    public void testContent()
-    {
-	Scanner scan = new Scanner(System.in);
-	System.out.println("\nEnter Country name 1 : "); 
-	String key1 = scan.next();
-	System.out.println("Enter Country name 2 : "); 
-	String key2 = scan.next();
+    public void testContent() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("\nEnter Country name 1 : ");
+        String key1 = scan.next();
+        System.out.println("Enter Country name 2 : ");
+        String key2 = scan.next();
 
-        
-	if (G.containsEdge(key1, key2))
-            System.out.printf("\n%s-%s exists \n", key1, key2);
-	else
-            System.out.printf("\n%s-%s does not exist \n", key1, key2);
 
-        
-        // Exception if key1 doesn't exist
-	if (G.containsVertex(key1))
-	{
-            System.out.printf("\nDegree of %s = %d \n", key1, G.degreeOf(key1));
-            Set<DefaultEdge> edges = G.edgesOf(key1);
-            printDefaultEdges(edges, false);
-            
-            System.out.printf("\nIndegree of %s = %d \n", key1, G.inDegreeOf(key1));
-            Set<DefaultEdge> inedges = G.incomingEdgesOf(key1);
-            printDefaultEdges(inedges, false);      
-            
-            System.out.printf("\nOutdegree of %s = %d \n", key1, G.outDegreeOf(key1));
-            Set<DefaultEdge> outedges = G.outgoingEdgesOf(key1);
-            printDefaultEdges(outedges, false);                 
-	}
+        if (G.containsEdge(key1, key2))
+                System.out.printf("\n%s-%s exists \n", key1, key2);
+        else
+                System.out.printf("\n%s-%s does not exist \n", key1, key2);
+
+
+            // Exception if key1 doesn't exist
+        if (G.containsVertex(key1))
+        {
+                System.out.printf("\nDegree of %s = %d \n", key1, G.degreeOf(key1));
+                Set<DefaultEdge> edges = G.edgesOf(key1);
+                printDefaultEdges(edges, false);
+
+                System.out.printf("\nIndegree of %s = %d \n", key1, G.inDegreeOf(key1));
+                Set<DefaultEdge> inedges = G.incomingEdgesOf(key1);
+                printDefaultEdges(inedges, false);
+
+                System.out.printf("\nOutdegree of %s = %d \n", key1, G.outDegreeOf(key1));
+                Set<DefaultEdge> outedges = G.outgoingEdgesOf(key1);
+                printDefaultEdges(outedges, false);
+        }
     }
 
-    public void checkType()
-    {
-        // (1) use Java's operator
-        if (G instanceof SimpleGraph) System.out.println("\nInstance of SimpleGraph");
-        else                          System.out.println("\nInstance of other");
+    public void checkType() {
+        // (1) use Java's operator (instance of)
+        if (G instanceof SimpleGraph) { System.out.println("\nInstance of SimpleGraph"); }
+        else { System.out.println("\nInstance of other"); }
         
         // (2) use GraphType
         GraphType type = G.getType();
@@ -154,8 +147,7 @@ class D11_1_SimpleGraph
         ConnectivityInspector<String, DefaultEdge> weakConn = new ConnectivityInspector<>(G);
         
         if (weakConn.isConnected()) System.out.println("\nWeakly connected");
-        else                        
-        {
+        else {
             System.out.println("\nNot weakly connected");
             List< Set<String> > subgraphList = weakConn.connectedSets();
             System.out.println("All subgraphs = " + subgraphList);            
@@ -205,12 +197,12 @@ class D11_1_SimpleGraph
         color = new GreedyColoring<>(G);
         //color = new LargestDegreeFirstColoring<>(G);      // child class of GreedyColoring
         //color = new SmallestDegreeLastColoring<>(G);      // child class of GreedyColoring
+        //เขียนได้ 3 แบบ
         
         System.out.println("\nGroup vertices by colors");
         List< Set<String> > colorList = color.getColoring().getColorClasses();
         System.out.println("All colors = " + colorList);
-        for (int i=0; i<colorList.size(); i++)
-        {
+        for (int i=0; i<colorList.size(); i++) {
             System.out.printf("   Color %d = %s \n", i, colorList.get(i));
         }
         

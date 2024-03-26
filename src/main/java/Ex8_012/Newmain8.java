@@ -7,8 +7,8 @@ import java.util.*;
 
 public class Newmain8 {
     public static void main(String[] args) {
+        int countMovie = 0;
         ActorMap AM = new ActorMap();
-        int countMovie = 0, countName = 0;
         try {
             String file = "src/main/java/Ex8_012/movies.txt";
             Scanner filescan = new Scanner(new File(file));

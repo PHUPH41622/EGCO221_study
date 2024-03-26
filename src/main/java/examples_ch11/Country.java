@@ -20,10 +20,9 @@ class Country
     }
         
     // equality based on name
-    public boolean equals(Object o)
-    {
-	Country other = (Country)o;
-	return this.name.equalsIgnoreCase(other.name);
+    public boolean equals(Object o) {
+        Country other = (Country)o;
+        return this.name.equalsIgnoreCase(other.name);
     }
     
     // hashcode based on the hashcode of name
