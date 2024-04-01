@@ -88,7 +88,7 @@ class ActorGraph {
     public LinkedHashSet<String> InputValidActor () {
         LinkedHashSet<String> validActors = new LinkedHashSet<>();
         Scanner keyboard = new Scanner(System.in);
-        System.out.println("\n==================== Bacon parties ====================");
+        System.out.println("\n==================== Bacon degree ====================");
         System.out.println("Enter names or surnames, or 0 to quit");
         String substring = keyboard.nextLine();
         if (Objects.equals(substring, "0")) {
