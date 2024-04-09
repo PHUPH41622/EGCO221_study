@@ -29,7 +29,13 @@ class SortTeacherByName implements Comparator<Teacher> {
 }
 
 class SortTeacherByAge implements Comparator<Teacher> {
-    public int compare(Teacher t1, Teacher t2)      { return t1.getAge() - t2.getAge(); }
+    public int compare(Teacher t2, Teacher t1)      {
+        if(t2.getAge() - t1.getAge() < 0){
+            return 1;
+        }else if(t2.getAge() - t1.getAge() > 0){
+            return -1;
+        }else return 0;
+    }
 }
 
 class SortTeacherByEmployed implements Comparator<Teacher> {

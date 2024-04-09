@@ -29,10 +29,10 @@ class D6_2_ListObjects {
         mainprog.initialize();
 
 //        mainprog.testForGetI();
-//        mainprog.testForEach();
-//        mainprog.testIterator();
+        //mainprog.testForEach();
+        mainprog.testIterator();
         
-        mainprog.shallowCopy();  mainprog.testCloned();
+        //mainprog.shallowCopy();  mainprog.testCloned();
         //mainprog.deepCopy();     mainprog.testCloned();
     }
 
@@ -73,10 +73,10 @@ class D6_2_ListObjects {
         int index = 0;
         for (Student s : LL) {
             if (index == 0) {
-//                LL.remove(LL.size()-1); // error (runtime exception)
-//                LL.add(new Student("Jones", -100)); // error
-                LL.set(2, new Student("Karen", -200)); // replace obj
-                LL.get(3).setScore(-300); // set obj content
+                //LL.remove(LL.size()-1); // error (runtime exception)
+                //LL.add(new Student("Jones", -100)); // error
+                //LL.set(2, new Student("Karen", -200)); // replace obj
+                //LL.get(3).setScore(-300); // set obj content
             }
             s.print(); index++;
         }
@@ -84,7 +84,7 @@ class D6_2_ListObjects {
     
     public void testIterator() {
         //ListIterator<Student> iter1 = LL.listIterator(); 
-        ListIterator<Student> iter1 = LL.listIterator(2);
+        ListIterator<Student> iter1 = LL.listIterator(2);   
         System.out.println("\n=== Move next ===");
         int index = 0;
         while(iter1.hasNext()) {
@@ -113,22 +113,26 @@ class D6_2_ListObjects {
     }
     
     ////////////////////////////////////////////////////////////////////////////
-    public void shallowCopy() {
+    public void shallowCopy()
+    {
         System.out.println("\n=== Shallow copy ===");
         //cloned_LL = (LinkedList<Student>) LL.clone();
         cloned_LL = new LinkedList<Student>(LL);
     }
         
-    public void deepCopy() {
+    public void deepCopy()
+    {
         System.out.println("\n=== Deep copy ===");
         cloned_LL = new LinkedList<Student>();
-        for (Student s : LL) {
+        for (Student s : LL)
+        {
             // create a new Student object & add it to cloned list
             cloned_LL.add( new Student(s.getName(), s.getScore()) );
         }
     }
     
-    public void testCloned() {
+    public void testCloned()
+    {
         LL.removeFirst();         
         cloned_LL.removeLast();           
         System.out.println("\nOriginal (-first) = " + LL); 

@@ -2,34 +2,31 @@ package examples_ch10;
 
 import java.util.*;
 
-class D10_3_Map 
-{
+class D10_3_Map {
     // use method equals and hashcode in class Student
     HashMap<String, Student> HM;
     TreeMap<String, Student> TM;
     
-    public void initializeHash()
-    {
+    public void initializeHash() {
         // Key equality is defined by method equals in class String        
-	//HM = new HashMap<>();
+	    //HM = new HashMap<>();
         HM = new LinkedHashMap<>();
         
-	HM.put("0002", new Student("Ellen", 45.0));	
-	HM.put("0004", new Student("David", 35.0));
-	HM.put("0006", new Student("Carol", 45.0));	
-	HM.put("0001", new Student("Annie", 55.0));
-	HM.put("0003", new Student("Betty", 35.0));
-	HM.put("0004", new Student("Annie", 25.0));	// replace ("David", 35.0)	
-        
-	System.out.println("=== HashMap content ==="); 
-        printMap(HM); 
+        HM.put("0002", new Student("Ellen", 45.0));
+        HM.put("0004", new Student("David", 35.0));
+        HM.put("0006", new Student("Carol", 45.0));
+        HM.put("0001", new Student("Annie", 55.0));
+        HM.put("0003", new Student("Betty", 35.0));
+        HM.put("0004", new Student("Annie", 25.0));	// replace ("David", 35.0)
+
+        System.out.println("=== HashMap content ===");
+            printMap(HM);
     }
     
-    public void initializeTreeFromHash()
-    {
+    public void initializeTreeFromHash() {
         // Key equality is defined by method compareTo in class String
         TM = new TreeMap<>(HM);
-	System.out.println("\n=== TreeMap content ==="); 
+	    System.out.println("\n=== TreeMap content ===");
         printMap(TM);        
     }
     
@@ -72,12 +69,12 @@ class D10_3_Map
         mainprog.initializeHash();  
         //mainprog.testHashMap();
         
-        //mainprog.initializeTreeFromHash();
-        //mainprog.testTreeMap();
+        mainprog.initializeTreeFromHash();
+        mainprog.testTreeMap();
 
         
         // Uncomment all above lines to avoid confusion
-        mainprog.testNewTree();
+//        mainprog.testNewTree();
     }
         
     ////////////////////////////////////////////////////////////////////////////

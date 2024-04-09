@@ -1,7 +1,8 @@
 package examples_ch5;
 
-class MyStudent extends Student implements Comparable<MyStudent>
-//class MyStudent extends Student implements Comparable
+//class MyStudent extends Student implements Comparable<MyStudent>
+//class MyStudent extends Student
+class MyStudent extends Student implements Comparable
 {
     // additional variable in child class
     private int age;	
@@ -17,13 +18,14 @@ class MyStudent extends Student implements Comparable<MyStudent>
     }
 
     // implement method in Comparable
-    public int compareTo(MyStudent other)
-    //public int compareTo(Object o)
+//    public int compareTo(MyStudent other)
+    public int compareTo(Object o)
     {
-        //MyStudent other = (MyStudent)o;
+        MyStudent other = (MyStudent)o;
         if (this.getScore() < other.getScore())		return -1;
         else if (this.getScore() > other.getScore())	return 1;
         else return 0;
     }
+
 }
 
