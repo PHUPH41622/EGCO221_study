@@ -5,6 +5,7 @@ import org.jgrapht.GraphPath;
 import org.jgrapht.Graphs;
 import org.jgrapht.alg.color.GreedyColoring;
 import org.jgrapht.alg.color.LargestDegreeFirstColoring;
+import org.jgrapht.alg.color.SmallestDegreeLastColoring;
 import org.jgrapht.alg.interfaces.ShortestPathAlgorithm;
 import org.jgrapht.alg.shortestpath.BFSShortestPath;
 import org.jgrapht.graph.DefaultEdge;

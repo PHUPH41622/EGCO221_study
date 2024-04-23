@@ -127,8 +127,8 @@ class D11_3_SimpleDirectedGraph extends D11_1_SimpleGraph // extend จาก cl
 	{
             ShortestPathAlgorithm<String, DefaultEdge> shpath;
             
-            shpath = new BFSShortestPath<>(G);
-            //shpath = new DijkstraShortestPath<>(G);
+//            shpath = new BFSShortestPath<>(G);
+            shpath = new DijkstraShortestPath<>(G);
             //shpath = new BellmanFordShortestPath<>(G);
             //shpath = new FloydWarshallShortestPaths<>(G);
             
