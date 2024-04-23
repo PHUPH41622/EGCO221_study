@@ -255,21 +255,21 @@ public class D12_8_SortTeacher {
         D12_8_SortTeacher mainprog = new D12_8_SortTeacher();
         mainprog.initialize();
   
-        //System.out.println("\n=== Sort by age ===");    mainprog.testSorting(1);
-        //System.out.println("\n=== Sort by employ ==="); mainprog.testSorting(2);
+        System.out.println("\n=== Sort by age ===");    mainprog.testSorting(1); // 1 is sorting age
+        System.out.println("\n=== Sort by employ ==="); mainprog.testSorting(2); // 2 is sorting employed
         
-        //mainprog.testJavaSorting();
+        mainprog.testJavaSorting();
     }
     
     public void testSorting(int var)
     {
         for(Teacher te : T) te.setDummy(var);
                 
-        algorithm.bubblesort();           
-        //algorithm.selectionsort();        // unstable
+//        algorithm.bubblesort();
+//        algorithm.selectionsort();        // unstable
         //algorithm.insertionsort();        
         //algorithm.shellsort();	    // unstable
-        //algorithm.heapsort();             // depend on comparison rule
+//        algorithm.heapsort();             // depend on comparison rule
         //algorithm.mergesort();	    // depend on comparison rule
         //algorithm.quicksort();	    // unstable        
     }

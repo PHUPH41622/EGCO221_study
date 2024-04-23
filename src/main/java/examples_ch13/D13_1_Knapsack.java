@@ -71,8 +71,7 @@ class D13_1_Knapsack
                     int newV = items[i].getValue() + V[i - 1][space];
                     int newW = items[i].getWeight() + W[i - 1][space];
 
-                    if ((newV > V[i][k])
-                            || (newV == V[i][k] && newW < W[i][k])) {
+                    if ((newV > V[i][k]) || (newV == V[i][k] && newW < W[i][k])) {
                         V[i][k] = newV;
                         W[i][k] = newW;
                         B[i][k].clear();
